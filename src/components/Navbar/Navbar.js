@@ -17,29 +17,29 @@ const Navbar = () => {
 
   let navigate = useNavigate();
 
-const getData = async () => {
-  try {
-    const res = await fetch(
-      `https://academics.newtonschool.co/api/v1/music/song?search={"title":"${search}"}`,
-      {
-        headers: {
-          projectID: "fgq9fidgo5dw",
-        },
+  const getData = async () => {
+    try {
+      const res = await fetch(
+        `https://academics.newtonschool.co/api/v1/music/song?search={"title":"${search}"}`,
+        {
+          headers: {
+            projectID: "fgq9fidgo5dw",
+          },
+        }
+      );
+
+      if (!res.ok) {
+        throw new Error('Error fetching data');
       }
-    );
 
-    if (!res.ok) {
-      throw new Error('Error fetching data');
+      const data = await res.json();
+      const data1 = data.data;
+      setData(data1);
+      console.log(data, 'searching data');
+    } catch (error) {
+      console.error('Error:', error);
     }
-
-    const data = await res.json();
-    const data1 = data.data;
-    setData(data1);
-    console.log(data, 'searching data');
-  } catch (error) {
-    console.error('Error:', error);
-  }
-};
+  };
 
   console.log(search);
   useEffect(() => {
@@ -112,9 +112,6 @@ const getData = async () => {
 
         </div>
       </div>
-
-      {/* Render the SignInForm component */}
-      {/* <SignInForm show={showSignInForm} onClose={() => setShowSignInForm(false)} /> */}
     </>
   );
 };
