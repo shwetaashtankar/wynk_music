@@ -1,0 +1,108 @@
+@font-face {
+  font-family: 'robo';
+  src: url('../../fonts/roboto.ttf'); 
+}
+
+
+.navbar{
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  background: linear-gradient(98.3deg, rgb(0, 0, 0) 10.6%, rgb(255, 0, 0) 97.7%);
+    /* background-color: #1B1A1A; */
+    /* background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(151,41,247,1) 0%, rgba(24,22,39,1) 90% ); */
+    width: 100%;
+    height: 80px;
+    color: #fff;
+    padding: 30px 100px;
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    font-family: 'robo', sans-serif;
+  }
+
+  .navbar p{
+    font-size: 20px;
+    font-weight: 300;
+  }
+
+  .logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .wynk_logo{
+    width: 50px;
+    height: 50px;
+  }
+
+  .navbar_1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 300px;
+  }
+
+  .navbar_1 input {
+    width: 270px;
+    height: 32px;
+    padding: 20px 10px;
+    background-color: #282c347e;
+    border-radius: 20px;
+    border: 1px solid  #0c0c0c;
+    outline: none;
+    color: #fff;
+    font-size: 20px;
+    text-indent: 60px;
+    transition: all 2s linear;
+  }
+
+  .navbar_1 input:hover{
+    border: 1px solid  #fff;
+  }
+
+
+  input::placeholder{
+    color: #737577;
+    font-size: 15px;
+    text-indent: 60px;
+  }
+
+
+  .search-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .navbar_1 p{
+    font-size: 16px;
+    margin-left: 60px;
+    font-weight: 300;
+  }
+
+
+.login{
+  margin-left: 30px;
+  /* gap: 20px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.login img{
+  width: 25px;
+  height: 25px;
+  margin-right: -50px;
+  margin-left: 30px;
+}
+
+.login p{
+  font-size: 16px;
+ 
+}
