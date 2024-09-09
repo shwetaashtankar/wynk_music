@@ -4,7 +4,7 @@ import pngImage from "../../images/pngImage.png";
 import userIcon from "../../images/userIcon.png";
 import search_icon from "../../images/search_icon.png";
 import { useNavigate } from "react-router-dom";
-import {Menu, MenuItem} from "@mui/material" 
+import { Menu, MenuItem } from "@mui/material"
 
 
 
@@ -18,25 +18,33 @@ const Navbar = () => {
   let navigate = useNavigate();
 
   const getData = async () => {
-    let res = await fetch(
-      `https://academics.newtonschool.co/api/v1/music/song?search={"title":${search}}`,
-      {
-        headers: {
-          projectID: "fgq9fidgo5dw",
-        },
+    try {
+      const res = await fetch(
+        `https://academics.newtonschool.co/api/v1/music/song?search={"title":"${search}"}`,
+        {
+          headers: {
+            projectID: "fgq9fidgo5dw",
+          },
+        }
+      );
+
+      if (!res.ok) {
+        throw new Error('Error fetching data');
       }
-    );
-    let data = await res.json();
-    let data1 = data.data;
-    setData(data1);
-    // console.log(data1);
-    console.log(data, 'searching data')
+
+      const data = await res.json();
+      const data1 = data.data;
+      setData(data1);
+      console.log(data, 'searching data');
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   console.log(search);
   useEffect(() => {
     const token = sessionStorage.getItem("token");
-    if(token){
+    if (token) {
       setIsLogin(true)
       let loginName = sessionStorage.getItem("name")
       setUserName(loginName)
@@ -44,20 +52,20 @@ const Navbar = () => {
     getData();
   }, [search]);
 
-  function login(e){
-    if(isLogin){
+  function login(e) {
+    if (isLogin) {
       setAnchorEl(e.currentTarget)
     }
-    else{
+    else {
       navigate('/login')
     }
   }
 
-  function handleMenuClose(){
+  function handleMenuClose() {
     setAnchorEl(null);
   }
 
-  function logout(){
+  function logout() {
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("name");
     setIsLogin(false);
@@ -92,7 +100,7 @@ const Navbar = () => {
 
           <div className="login" onClick={login}>
             <img src={userIcon} alt="user_icon" />
-            
+
             {
               isLogin ? <p>{userName}</p> : <p>Login</p>
             }
@@ -104,9 +112,6 @@ const Navbar = () => {
 
         </div>
       </div>
-
-      {/* Render the SignInForm component */}
-      {/* <SignInForm show={showSignInForm} onClose={() => setShowSignInForm(false)} /> */}
     </>
   );
 };
